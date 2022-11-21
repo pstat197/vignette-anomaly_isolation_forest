@@ -2,6 +2,9 @@
 .Rhistory
 .RData
 .Ruserdata
+<<<<<<< Updated upstream
 vignette-group6/.DS_Store
 vignette-group6/data/.DS_Store
 .DS_Store
+=======
+>>>>>>> Stashed changes
