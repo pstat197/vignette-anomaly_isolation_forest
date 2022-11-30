@@ -78,7 +78,7 @@ credit_no_class <- credit %>% select(c(Time, Amount))
 model_orig <- isolation.forest(
   credit_no_class,
   ndim=1, sample_size=256,
-  ntrees=100,
+  ntrees=1000,
   missing_action="fail"
 )
 pred_orig <- predict(model_orig, credit_no_class)
@@ -87,7 +87,7 @@ pred_orig <- predict(model_orig, credit_no_class)
 model_dens <- isolation.forest(
   credit_no_class,
   ndim=1, sample_size=256,
-  ntrees=100,
+  ntrees=1000,
   missing_action="fail",
   scoring_metric="density"
 )
@@ -98,7 +98,7 @@ model_fcf <- isolation.forest(
   credit_no_class,
   ndim=1, sample_size=32,
   prob_pick_pooled_gain=1,
-  ntrees=100,
+  ntrees=1000,
   missing_action="fail"
 )
 pred_fcf <- predict(model_fcf, credit_no_class)
@@ -121,4 +121,3 @@ results_df <- data.frame(
 results_df %>%
   kable() %>%
   kable_styling()
-
