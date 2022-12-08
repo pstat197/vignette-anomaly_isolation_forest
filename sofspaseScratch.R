@@ -5,10 +5,16 @@ library(mlbench)
 library(MLmetrics)
 library(kableExtra)
 library(ggplot2)
+library(dplyr)
+library(yardstick)
 
 # loading data
 load("vignette-group6/data/fertility_rate.RData")
 View(fertility_rate)
+
+###################################
+# SCROLL DOWN FOR THE CREDIT DATA #
+###################################
 
 # Isolation Forest
 model_orig <- isolation.forest(
@@ -62,9 +68,9 @@ results_df %>%
 
 
 
-
-
-
+################
+# CREDEIT DATA #
+################
 
 ## Trying the same code with credit card anomalies
 
@@ -72,7 +78,8 @@ results_df %>%
 load("vignette-group6/data/creditcard.RData")
 View(credit)
 
-credit_no_class <- credit %>% select(c(Time, Amount))
+#credit_no_class <- credit %>% select(c(Time, Amount))
+credit_no_class <- credit %>% select(-Class)
 
 # Isolation Forest
 model_orig <- isolation.forest(
@@ -103,9 +110,6 @@ model_fcf <- isolation.forest(
 )
 pred_fcf <- predict(model_fcf, credit_no_class)
 
-
-
-
 results_df <- data.frame(
   Model = c(
     "Isolation Forest",
@@ -121,3 +125,12 @@ results_df <- data.frame(
 results_df %>%
   kable() %>%
   kable_styling()
+
+
+ggplot(credit, aes(x = Time, y = Amount, color = pred_orig)) +
+  geom_point(alpha = 0.5, fill = pred_orig) +
+  labs(x = "Time", y = "Transaction Amount") +
+  labs(alpha = "", color = "Legend") +
+  scale_color_gradient(low = "yellow", high = "purple")
+
+
