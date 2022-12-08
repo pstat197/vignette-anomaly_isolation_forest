@@ -110,6 +110,13 @@ model_fcf <- isolation.forest(
 )
 pred_fcf <- predict(model_fcf, credit_no_class)
 
+"In the case of anomolies, our metric of choice is going to be the area 
+under the curve. Accuracy is not the best metric in this case since there
+are few outliers and classifying the entire dataset as normal points would
+still yeild a high accuracy rate. The ROC curve on the other hand, finds a 
+balance between sensitivity (true positives) and specificity 
+(false positives) giving us better insight into how well our models worked."
+
 results_df <- data.frame(
   Model = c(
     "Isolation Forest",
