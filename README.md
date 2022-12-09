@@ -18,6 +18,8 @@ img - supplementary images
   * isolationForest.png - shows how isolation forest detects anomolies.
   * isolationTree.png - shows an example of an isolation tree.
   * outlier-plot.png - shows the amount of outliers detected in the dataset.
+  * normalvsfraud.png - shows amount of normal vs fraud transactions.
+  * accuracy-report.png - shows accuracy and roc curve score of isolation forest model.
   
 scripts
   * drafts - preliminary scripts
