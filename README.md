@@ -27,7 +27,9 @@ scripts
     * python - python scripts
       * .ipynb_checkpoints
         * anomolydetectioncreditcard-checkpoint.ipynb
-      * anomolydetectioncreditcard.ipynb
+      * anomolydetectioncreditcard.ipynb - script to run isolation forest on credit card dataset in python
+  * iForest.R
+   * script to run isolation forest on credit card dataset in R
       
 .DS_Store
 
