@@ -11,9 +11,9 @@ Isolation Forest (iForest) is an unsupervised machine learning algorithm which i
 ## Repository contents
 data - the datasets used in the vignette 
 
-  creditcard.RData - the dataset for the R implementation.
+  * creditcard.RData - the dataset for the R implementation.
   
-  creditcard.csv - the dataset for the python implementation.
+  * creditcard.csv - the dataset for the python implementation.
   
 img - supplementary images
 
