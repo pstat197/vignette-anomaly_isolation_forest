@@ -7,7 +7,7 @@ output: html_document
 
 ## Isolation Forests
 
-Isolation Forest is an unsupervised machine learning algorithm which is used for anomaly detection (e.g., credit card fraud / money laundering). Isolation forests are similar to random forests in the sense that they both use an ensemble of trees for classification. Instead of decision trees, isolation forests use what are called isolation trees. Once the isolation forest is built, the anomalies are points with the shortest average path length. In isolation forests, it’s much easier to isolate an outlier than it is to isolate in inlier (or “normal” points).
+Isolation Forest is an unsupervised machine learning algorithm which is used for anomaly detection (e.g., credit card fraud / money laundering). Isolation forests are similar to random forests in the sense that they both use an ensemble of trees for classification. Instead of decision trees, isolation forests use what are called isolation trees. Once the isolation forest is built, the anomalies are points with the shortest average path length. In isolation forests, it's much easier to isolate an outlier than it is to isolate in inlier (or "normal" points).
 
 ## What are isolation trees and how do they work?
 
@@ -15,42 +15,35 @@ Isolation Forest is an unsupervised machine learning algorithm which is used for
 
 Isolation trees are data structures with the following property:
 
-Let T be a node of an isolation tree. For each node in the tree, it’s either an external node (single node with no children) or an internal node with 2 daughter nodes ($T_l$, $T_r$) with a “test”. On a diagram, $T_l$ and $T_r$ would represent the left and right daughter nodes, respectively. 
+Let T be a node of an isolation tree. For each node in the tree, it's either an external node (single node with no children) or an internal node with 2 daughter nodes ($T_l$, $T_r$) with a "test". On a diagram, $T_l$ and $T_r$ would represent the left and right daughter nodes, respectively.
 
 $\textbf{What’s the “test” in an isolation tree?}$
-	
-Given a sample of data $X = \{x_1,x_2,..., x_n\}$ with n observations from a d-variate distribution an isolation tree would take an attribute $q$of an observation and compare it to a splitting value p. The test is $q < p$: if $q < p$, then the point would be assigned to $T_l$, else it would be assigned to $T_r$.
-To build an isolation tree, we recursively divide X by randomly selecting an attribute $q \in\{1,...,d\}$ and splitting value $p$, which is some number in between the maximum and minimum of the $q$th attribute of all data points.
-The test splits the data points into $T_l$ and $T_r$ and the process continues recursively until either:
 
-$\quad$ a)  A height limit is reached
+Given a sample of data $X = \{x_1,x_2,..., x_n\}$ with n observations from a d-variate distribution an isolation tree would take an attribute $q$of an observation and compare it to a splitting value p. The test is $q < p$: if $q < p$, then the point would be assigned to $T_l$, else it would be assigned to $T_r$. To build an isolation tree, we recursively divide X by randomly selecting an attribute $q \in\{1,...,d\}$ and splitting value $p$, which is some number in between the maximum and minimum of the $q$th attribute of all data points. The test splits the data points into $T_l$ and $T_r$ and the process continues recursively until either:
 
-$\quad$ b) |X| = 1 (can’t split data anymore)
+$\quad$ a) A height limit is reached
+
+$\quad$ b) \|X\| = 1 (can't split data anymore)
 
 $\quad$ c) Or all data in X have the same value
 
 ![](img/isolationForest.png)
 
-
-Once the splitting process is over, we’re left with an isolation tree. We then have to tell which points are anomalies and which are “normal” points, which is done by sorting them by their path length and anomaly score.
-
-
+Once the splitting process is over, we're left with an isolation tree. We then have to tell which points are anomalies and which are "normal" points, which is done by sorting them by their path length and anomaly score.
 
 ## Path Length and Anomaly Score
 
 Path length $h(x)$: is measured by the number of edges $x$, a data point, traverses an isolation tree from the root node to an external node.
 
-The anomaly score s of an instance $x$ is defined as:
-$s(x,n) = 2^{-E(h(x)/c(n))}$, where  $E(h(x))$ is the expected $h(x)$ from a collection of isolation trees, $c(n)  = 2H(n − 1) − (2(n − 1)/n)$; average path length of unsuccessful search in Binary Search Tree, $H(i)$ is the harmonic number and it can be estimated by $ln(i) + 0.5772156649$ (Euler’s constant).More about why $c(n)$ is used in references.
+The anomaly score s of an instance $x$ is defined as: $s(x,n) = 2^{-E(h(x)/c(n))}$, where $E(h(x))$ is the expected $h(x)$ from a collection of isolation trees, $c(n) = 2H(n − 1) − (2(n − 1)/n)$; average path length of unsuccessful search in Binary Search Tree, $H(i)$ is the harmonic number and it can be estimated by $ln(i) + 0.5772156649$ (Euler's constant).More about why $c(n)$ is used in references.
 
-
-Looking at anomaly score we see that: 
+Looking at anomaly score we see that:
 
 As $E(h(x)) \rightarrow c(n), s \rightarrow 0.5$
 
-As $E(h(x)) \rightarrow 0, s \rightarrow 1$ 
+As $E(h(x)) \rightarrow 0, s \rightarrow 1$
 
-As $E(h(x)) \rightarrow n-1, s \rightarrow 0$ 
+As $E(h(x)) \rightarrow n-1, s \rightarrow 0$
 
 Most notably, this implies that the lower the average path length of a point (i.e., more likely to be an anomaly), the higher the anomaly score. Conversely, the higher the average path length (i.e., more likely to be a normal point), the lower the anomaly score.
 
@@ -64,9 +57,6 @@ Using the anomaly score, s, the following assessment is made:
 
 (c) if all the instances return $s \approx 0.5$, then the entire sample does not really have any distinct anomaly.
 
-
-
-
 ## To implement isolation forests (in Python) algorithmically, one can control:
 
 n_estimators: The number of base estimators (isolation trees) in ensemble (forest)
@@ -77,9 +67,7 @@ contamination: The proportion of outliers in the dataset
 
 bootstrap: If True, individual trees are fit on random subsets of the training data sampled with replacement.
 
-
 ## To Implement isolation forest (in R) algorithmically, one can control:
-
 
 ntrees: The number of isolation trees in isolation forest
 
@@ -87,7 +75,7 @@ sample_size: The number of samples to draw from the dataset to train each isolat
 
 ndim: The number of columns to combine to produce a split
 
-missing_action: How to handle missing data at both fitting and prediction time. Set equal to “fail” will assume there’s no missing data and will trigger undefined behavior if it encounters any 
+missing_action: How to handle missing data at both fitting and prediction time. Set equal to "fail" will assume there's no missing data and will trigger undefined behavior if it encounters any
 
 scoring_metric: Metric to use for determining anomaly scores
 
@@ -112,7 +100,6 @@ load("data/creditcard.RData")
 class <- credit %>% select(Class)
 credit <- credit %>% select(-Class)
 ```
-
 
 # R Implemenation
 
@@ -192,6 +179,7 @@ results_df %>%
   kable() %>%
   kable_styling()
 ```
+
 ![](img/auroc-table.png)
 
 Lastly, a new plot of the data on a gradient from least likely to be an outlier (yellow) to most likely to be an outlier (purple).
@@ -209,5 +197,37 @@ ggplot(credit, aes(x = Time, y = Amount, color = pred_orig)) +
 
 We followed the guide in the following link: <https://www.kaggle.com/code/norealityshows/outlier-detection-with-isolation-forest-in-r/notebook>
 
-
 # Python Implementation
+
+The python implementation will use the IsolationForest function from sklearn and the same credit card dataset as the R implementation.
+
+```{python}
+# imports
+from sklearn.ensemble import IsolationForest
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+from sklearn.metrics import classification_report,accuracy_score,roc_auc_score
+
+```
+
+### Reading the credit card dataset
+
+This dataset has 31 variables:
+
+-   Time - time of transaction
+
+-   V1-28 - PCAs
+
+-   Amount - amount of money in transaction
+
+-   Class - 0 or 1, where 0 is not a fraud and 1 is a fraud
+
+```{python}
+
+# reading data
+data = pd.read_csv('creditcard.csv')
+data.head()
+```
+
+We followed the guide using the following link: <https://www.kaggle.com/code/naveengowda16/anomaly-detection-credit-card-fraud-analysis>
