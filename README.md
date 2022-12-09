@@ -14,7 +14,11 @@ data - contains 2 files, creditcard.RData and creditcard.csv.  These are the dat
 
 ## References
 Dataset: https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
+
 Method references:
+
 https://cs.nju.edu.cn/zhouzh/zhouzh.files/publication/icdm08b.pdf	
-https://blog.paperspace.com/anomaly-detection-isolation-forest/	
+
+https://blog.paperspace.com/anomaly-detection-isolation-forest/
+
 https://github.com/h2oai/h2o-tutorials/blob/master/tutorials/isolation-forest/isolation-forest.ipynb
