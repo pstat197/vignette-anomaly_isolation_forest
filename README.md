@@ -28,7 +28,20 @@ scripts
       * .ipynb_checkpoints
         * anomolydetectioncreditcard-checkpoint.ipynb
       * anomolydetectioncreditcard.ipynb
-   
+      
+.DS_Store
+
+.gitignore
+
+README.md - vignette description and instructions about how to use vignette 
+
+iforest-report.Rmd - vignette report about isolation forest on credit card dataset in R Markdown
+
+iforest-report.html - vignette report about isolation forest on credit card dataset in html
+
+vignette-group6.Rproj
+
+vignette-group_6.Rproj
    
   
     
