@@ -9,6 +9,8 @@ Daniel Badilla Jr., Dan Le, Anya Macomber, and Sofia Spasibenko.
 Isolation Forest (iForest) is an unsupervised machine learning algorithm which is used for anomaly detection. We will be using iForests to detect credit card fraud or money laundering. This repository will implement the iForest algorithm in both R and Python to allow for application to projects in different languages. 
 
 ## Repository contents
+data - contains 2 files, creditcard.RData and creditcard.csv.  These are the datasets that the vignette will use.
+
 
 ## References
 Dataset: https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
