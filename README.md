@@ -26,6 +26,12 @@ img - supplementary images
 scripts -
 
   * drafts - preliminary scripts
+   
+   * R - R scripts
+   
+   * python - python scripts
+   
+   
   
     
 
