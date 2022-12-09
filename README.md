@@ -27,9 +27,9 @@ scripts -
 
   * drafts - preliminary scripts
    
-   * R - R scripts
+    * R - R scripts
    
-   * python - python scripts
+    * python - python scripts
    
    
   
