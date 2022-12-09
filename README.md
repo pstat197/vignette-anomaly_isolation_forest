@@ -12,11 +12,13 @@ Isolation Forest (iForest) is an unsupervised machine learning algorithm which i
 data - the datasets used in the vignette 
   * creditcard.RData - the dataset for the R implementation.
   * creditcard.csv - the dataset for the python implementation.
+  
 img - supplementary images
   * auroc-table.png - shows the models used in the vignette.
   * isolationForest.png - shows how isolation forest detects anomolies.
   * outlier-plot.png - shows the amount of outliers detected in the dataset.
-scripts -
+  
+scripts
   * drafts - preliminary scripts
     * R - R scripts
       * .DS_Store
