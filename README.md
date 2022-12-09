@@ -28,8 +28,20 @@ scripts -
   * drafts - preliminary scripts
    
     * R - R scripts
+     
+      * .DS_Store
+
+      * anyaScratch.R
+
+      * sofspaseScratch.R
    
     * python - python scripts
+    
+      * .ipynb_checkpoints
+        
+        * anomolydetectioncreditcard-checkpoint.ipynb
+      
+      * anomolydetectioncreditcard.ipynb
    
    
   
