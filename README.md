@@ -17,15 +17,16 @@ data - the datasets used in the vignette
   
 img - supplementary images
 
-  auroc-table.png - shows the models used in the vignette.
+  * auroc-table.png - shows the models used in the vignette.
   
-  isolationForest.png - shows how isolation forest detects anomolies.
+  * isolationForest.png - shows how isolation forest detects anomolies.
   
-  outlier-plot.png - shows the amount of outliers detected in the dataset.
+  * outlier-plot.png - shows the amount of outliers detected in the dataset.
   
 scripts -
 
-  drafts - preliminary scripts
+  * drafts - preliminary scripts
+  
     
 
 
